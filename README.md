@@ -1,3 +1,6 @@
+# Lesson 1
+В цьмоу занятті ми будемо розглядати компоненти та пропси.
+
 # Project location
 https://github.com/OktenSchool/may-2024-react
 
