@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AdminLayout = () => {
+const RecipesPage = () => {
     return (
         <div>
-            AdminLayout
+            RecipesPage
         </div>
     );
 };
 
-export default AdminLayout;
+export default RecipesPage;
