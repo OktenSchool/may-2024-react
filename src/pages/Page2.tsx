@@ -1,15 +1,11 @@
 import React from 'react';
-import './App.css';
 
-
-function App() {
+const Page2 = () => {
     return (
         <div>
-
-
+            Page2
         </div>
-
     );
-}
+};
 
-export default App;
+export default Page2;
