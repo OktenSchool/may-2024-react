@@ -1,15 +1,11 @@
 import React from 'react';
-import './App.css';
 
-
-function App() {
+const PostsPage = () => {
     return (
         <div>
 
-
         </div>
-
     );
-}
+};
 
-export default App;
+export default PostsPage;
