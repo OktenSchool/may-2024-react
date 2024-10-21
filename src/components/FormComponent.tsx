@@ -25,13 +25,10 @@ const FormComponent = () => {
         console.log(dataFromForm);
     };
     return (
-
-
         <form onSubmit={handleSubmit(customHandler)}>
             <div>
                 <label>
-
-                    <input type="text" placeholder={'username'} {...register}/>
+                    <input type="text" placeholder={'username'} {...register('username')}/>
                     {errors.username && <div>{errors.username.message}</div>}
                 </label>
             </div>
