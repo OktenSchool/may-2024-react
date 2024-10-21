@@ -16,7 +16,9 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "axios": "^1.7.7",
-    "react-hook-form": "^7.53.1"
+    "react-hook-form": "^7.53.1",
+    "joi": "^17.13.3",
+    "@hookform/resolvers": "^3.9.0"
   },
   "scripts": {
     "start": "react-scripts start",
