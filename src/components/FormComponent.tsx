@@ -1,13 +1,10 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
-import {userValidator} from "../validators/user.validator";
+import {postValidator} from "../validators/post.validator";
+import {IFormProps} from "../models/IFormProps";
+import {apiService} from "../services/api.service";
 
-interface FormProps {
-    username: string;
-    password: string;
-    age: number
-}
 
 const FormComponent = () => {
 
@@ -19,33 +16,32 @@ const FormComponent = () => {
             isValid
         }
 
-    } = useForm<FormProps>({mode: 'all', resolver: joiResolver(userValidator)});
+    } = useForm<IFormProps>({mode: 'all', resolver: joiResolver(postValidator)});
 
-    const customHandler = (dataFromForm: FormProps) => {
-        console.log(dataFromForm);
+    const customHandler = async (dataFromForm: IFormProps) => {
+        console.log(await apiService.post.savePost(dataFromForm));
     };
     return (
         <form onSubmit={handleSubmit(customHandler)}>
             <div>
                 <label>
-                    <input type="text" placeholder={'username'} {...register('username')}/>
-                    {errors.username && <div>{errors.username.message}</div>}
+                    <input type="text" placeholder={'title'} {...register('title')}/>
+                    {errors.title && <div>{errors.title.message}</div>}
                 </label>
             </div>
             <div>
-                <label><input type="text" placeholder={'password'} {...register('password')}/>
-                    {errors.password && <div>{errors.password.message}</div>}
+                <label><input type="text" placeholder={'body'} {...register('body')}/>
+                    {errors.body && <div>{errors.body.message}</div>}
                 </label>
             </div>
             <div>
                 <label>
-                    <input type="number" placeholder={'age'} {...register('age')}/>
-                    {errors.age && <div>{errors.age.message}</div>}
+                    <input type="number" placeholder={'userId'} {...register('userId')}/>
+                    {errors.userId && <div>{errors.userId.message}</div>}
                 </label>
             </div>
             <button disabled={!isValid}>save</button>
         </form>
-
 
     );
 };
