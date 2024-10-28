@@ -7,7 +7,7 @@ const UseRefComponentDemo2 = () => {
 
     useEffect(() => {
         console.log(anotherNumber.current);
-    }, [number]);
+    }, [anotherNumber]);
 
 
     return (
@@ -25,8 +25,8 @@ const UseRefComponentDemo2 = () => {
 
             <button onClick={() => {
                 setNumber(--number);
-                console.log(anotherNumber.current++);
-                console.log(anotherNumber);
+                // console.log(anotherNumber.current++);
+                // console.log(anotherNumber);
 
             }}>right
             </button>
