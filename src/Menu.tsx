@@ -1,6 +1,9 @@
 import React, {memo} from 'react';
 
-const Menu = memo(({id}:{id:number}) => {
+type MenuTypes = {
+    id: number; someFn: () => void
+};
+const Menu = memo(({id, someFn}: MenuTypes) => {
 
     console.log('menu build');
     return (
