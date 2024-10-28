@@ -1,19 +1,42 @@
-import React from 'react';
 import './App.css';
-import TonyStark from "./TonyStark";
-import ColonelMamba from "./ColonelMamba";
-import IronSuit from "./IronSuit";
+import React, {Component} from 'react';
+
+type PropsType = {}
+type StateType = {
+    users: any[];
+    posts: any[];
+    comments: any[];
+}
 
 
-function App() {
-    return (
-        <div>
-            <IronSuit><TonyStark/></IronSuit>
-            <IronSuit><ColonelMamba/></IronSuit>
+class App extends Component<PropsType, StateType> {
 
-        </div>
+    constructor(props: any) {
+        super(props);
+        this.state = {users: [], posts: [], comments: []};
+    }
 
-    );
+    componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(value => value.json())
+            .then(value => {
+                this.setState({users: value});
+            });
+    }
+
+    componentWillUnmount() {
+    }
+
+    render() {
+        return (
+            <div>
+                {
+                    this.state.users.map(user => (<div>{user.name}</div>))
+                }
+
+            </div>
+        );
+    }
 }
 
 export default App;
