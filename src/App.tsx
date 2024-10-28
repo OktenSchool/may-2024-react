@@ -1,22 +1,44 @@
-import React, {useRef} from 'react';
+import React, {useReducer} from 'react';
 import './App.css';
-import UseRefComponentDemo2 from "./UseRefComponentDemo2";
+
+type Action = { type: string, payload: number };
+
+const reducerActions = (state: number, action: Action) => {
+    switch (action.type) {
+        case 'add':
+            state = state + action.payload;
+            return state;
+        case 'getBack':
+            state = state - action.payload;
+            return state;
+
+        default:
+            return state;
+    }
+
+}
 
 
 function App() {
 
-    const customRef = useRef<HTMLInputElement>(null);
+    const [asdasd, dispatch] = useReducer(reducerActions, 0);
 
     return (
         <div>
-            {/*<input ref={customRef} type="text"/>*/}
-            {/*<button onClick={() => {*/}
-            {/*    console.log(customRef.current);*/}
-            {/*}}>click me*/}
-            {/*</button>*/}
+
+            <h2>{asdasd}</h2>
+            <button onClick={() => {
+                dispatch({type: 'add', payload: 1});
+            }}>increment
+            </button>
 
 
-            <UseRefComponentDemo2/>
+            <button onClick={() => {
+                dispatch({type: 'getBack', payload: 100});
+            }}>dectrement
+            </button>
+
+
         </div>
 
     );
