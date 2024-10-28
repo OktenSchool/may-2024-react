@@ -1,17 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
-import {useFetch} from "./hooks/useFetch";
+import Menu from "./Menu";
 
 
 function App() {
-    const users = useFetch();
-
+    let [number, setNumber] = useState<number>(0);
+    useEffect(() => {
+        console.log('App build');
+    })
 
     return (
         <div>
-            {
-                users.map((user) => (<div>{user.name}</div>))
-            }
+
+            <Menu id={number}/>
+
+            <h2>{number}</h2>
+            <button onClick={() => {
+                setNumber(++number);
+            }}>increment
+            </button>
+
         </div>
 
     );
