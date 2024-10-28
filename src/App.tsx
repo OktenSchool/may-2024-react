@@ -1,22 +1,17 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import './App.css';
-import UseRefComponentDemo2 from "./UseRefComponentDemo2";
+import {useFetch} from "./hooks/useFetch";
 
 
 function App() {
+    const users = useFetch();
 
-    const customRef = useRef<HTMLInputElement>(null);
 
     return (
         <div>
-            {/*<input ref={customRef} type="text"/>*/}
-            {/*<button onClick={() => {*/}
-            {/*    console.log(customRef.current);*/}
-            {/*}}>click me*/}
-            {/*</button>*/}
-
-
-            <UseRefComponentDemo2/>
+            {
+                users.map((user) => (<div>{user.name}</div>))
+            }
         </div>
 
     );
