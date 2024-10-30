@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {MyContext} from "./MyContextProvider";
-import UsersPage from "./page/UsersPage";
+import LoadUsersPage from "./page/LoadUsersPage";
+import ShowUsersPage from "./page/ShowUsersPage";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -12,7 +12,9 @@ const root = ReactDOM.createRoot(
 
 const routes = createBrowserRouter([
     {path: '/', element: <App/>, children:[
-            {path:'users',element:<UsersPage/>}
+            {path:'users',element:<LoadUsersPage/>},
+            {path:'show',element:<ShowUsersPage/>},
+
         ]},
 ])
 
