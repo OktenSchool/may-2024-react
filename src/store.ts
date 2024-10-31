@@ -1,5 +1,7 @@
 import {create} from "zustand";
 import {IUser} from "./models/IUser";
+import {IPost} from "./models/IPost";
+import {IComment} from "./models/IComment";
 
 type StoreType = {
     userSlice: {
@@ -7,8 +9,12 @@ type StoreType = {
         loadUsers: (users: IUser[]) => void
     },
     postSlice: {
-        allPosts: any[],
-        loadPosts: (posts: any) => void
+        allPosts: IPost[],
+        loadPosts: (posts: IPost[]) => void
+    },
+    commentSlice: {
+        allComments: IComment[],
+        loadComments: (comments: IComment[]) => void
     }
 }
 export const useStore = create<StoreType>()((set) => {
@@ -34,6 +40,20 @@ export const useStore = create<StoreType>()((set) => {
                         postSlice: {
                             ...state.postSlice,
                             allPosts: posts,
+                        }
+                    }
+                })
+            }
+        },
+        commentSlice: {
+            allComments: [],
+            loadComments: (comments) => {
+                return set(state => {
+                    return {
+                        ...state,
+                        commentSlice: {
+                            ...state.commentSlice,
+                            allComments: comments,
                         }
                     }
                 })
