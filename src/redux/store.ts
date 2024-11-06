@@ -24,8 +24,10 @@ export let userSlice = createSlice({
         },
         removeUser: (state, action: PayloadAction<number>) => {
             let id = action.payload;
-            let users = state.users.splice(id - 1, 1);
-            state.users = users;
+            // state.users.splice(id - 1, 1);
+            state.users = state.users.filter(user => user.id !== id);
+
+
         }
     }
 });

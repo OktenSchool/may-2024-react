@@ -9,15 +9,12 @@ function App() {
     let dispatch = useAppDispatch();
 
 
-
-
-
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(value => value.json())
             .then(users => {
                 dispatch(loadUsers(users));
-                // dispatch(  removeUser(1))
+
             });
 
     }, []);
@@ -25,7 +22,13 @@ function App() {
     return (
         <div>
             {
-                userSliceState.users.map((user) => (<div key={user.id}>{user.username}</div>))
+                userSliceState.users.map((user) => (<div key={user.id}>
+                    {user.username}
+                    <button onClick={() => {
+                        dispatch(removeUser(user.id));
+                    }}>delete me
+                    </button>
+                </div>))
             }
 
         </div>
