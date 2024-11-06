@@ -1,33 +1,27 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {loadUsers, removeUser, useAppDispatch, useAppSelector, userSlice} from "./redux/store";
-import {useSelector} from "react-redux";
+import {useAppDispatch, useAppSelector, userSliceActions,} from "./redux/store";
 
 
 function App() {
-    let userSliceState = useAppSelector(state => state.userSliceHimself);
+    let {users, user} = useAppSelector(state => state.userPart);
     let dispatch = useAppDispatch();
 
 
-
-
-
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(value => value.json())
-            .then(users => {
-                dispatch(loadUsers(users));
-                // dispatch(  removeUser(1))
-            });
+        // dispatch(userSliceActions.loadUsers());
+
+        dispatch(userSliceActions.loadUser(1));
 
     }, []);
 
     return (
         <div>
             {
-                userSliceState.users.map((user) => (<div key={user.id}>{user.username}</div>))
+                users.map((user) => (<div key={user.id}>{user.username}</div>))
             }
 
+            {user && <div>{JSON.stringify(user)}</div>}
         </div>
 
     );
